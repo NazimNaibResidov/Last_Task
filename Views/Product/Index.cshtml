@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="bg-primary text-white p-1 m-1 text-center">
+    <h2>Cargo List</h2>
+</div>
+<div class="text-danger" asp-validation-summary="All"></div>
+<form class="form-inline active-pink-3 active-pink-4" asp-controller="Product" asp-action="Index" method="get">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input id="q" name="q" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+           aria-label="Search">
+    <input id="d" name="d" class="form-control form-control-sm ml-3 w-75" type="date" placeholder="datetime"
+           aria-label="Search">
+    <input type="submit" class="btn btn-success" value="Search" />
+</form>
+<table class="table table-bordered table-striped m-1 p-1">
+    <tr>
+        
+        <th>Name</th>
+        <th>DateTime</th>
+        <th>City Departure</th>
+        <th>City Arrival</th>
+        <th>Stok</th>
+        <th>Weight</th>
+        <th>Category</th>
+
+
+
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td class="text-center btn-success" colspan="8">No Item</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            
+               
+                
+            
+            <tr>
+
+                
+                <td>@item.Name</td>
+                <td>@item.Datetime.Value.ToString("dd MMMM yyyy")</td>
+                <td>@item.Departrue.Name </td>
+                <td>@item.Arrival.Name </td>
+                <td>@item.Stok</td>
+                <td weight-siz="@item.Kg.Value">@item.Kg</td>
+
+                <td>@item.Category.Name</td>
+
+
+            </tr>
+        }
+    }
+</table>
+<a asp-controller="Product" asp-action="Add" class="btn btn-success">Create </a>

@@ -1,0 +1,59 @@
+﻿@model Product 
+ 
+@{
+    ViewData["Title"] = "Add";
+}
+
+    <form asp-controller="Product" asp-action="Add" method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control">
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Stok"></label>
+            <input asp-for="Stok" class="form-control">
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Kg"></label>
+            <input asp-for="Kg" class="form-control">
+
+        </div>
+        <div class="form-group">
+            <label>Category Name</label>
+            <select class="form-control" asp-for="CategoryId">
+                @foreach (var item in ViewBag.cat)
+                {
+                    <option value="@item.Id">@item.Name </option>
+                }
+            </select>
+
+
+        </div>
+        <div class="form-group">
+            <label>Departrue City</label>
+            <select class="form-control" name="DName">
+                @foreach (var item in  ViewBag.cit)
+                {
+                    <option value="@item.Name">@item.Name </option>
+                }
+            </select>
+
+
+        </div>
+        <div class="form-group">
+            <label>Arrival City</label>
+            <select class="form-control" name="AName">
+                @foreach (var item in ViewBag.cit)
+                {
+                    <option value="@item.Name">@item.Name </option>
+                }
+            </select>
+
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="bg-primary text-white p-1 m-1 text-center">
+    <h2>Role List</h2>
+</div>
+<div class="text-danger" asp-validation-summary="All"></div>
+<table class="table table-bordered table-striped m-1 p-1">
+    <tr>
+       
+        <th>Role Name</th>
+        <th>User</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Create User</th>
+       
+
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td class="text-center btn-danger" colspan="3">No Role</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+<tr>
+
+
+    <td>@item.Name</td>
+    <td identity-Role="@item.Id"></td>
+    <td>
+        <form asp-route-id="@item.Id" asp-action="Delete" asp-controller="Role" method="post">
+            <input class="btn btn-danger" type="submit" value="Delete" />
+        </form>
+
+    </td>
+    <td>
+        <form asp-route-id="@item.Id" asp-action="Update" asp-controller="Role" method="get">
+            <input class="btn btn-primary" type="submit" value="Update" />
+        </form>
+    </td>
+    <td>
+        <form asp-route-id="@item.Id" asp-controller="AdminRole" asp-action="Edit" method="get">
+            <input class="btn btn-info" type="submit" value="Create User" />
+        </form>
+    </td>
+
+</tr>
+        }
+    }
+</table>
+<a asp-controller="Role" asp-action="Create" class="btn btn-success">Create
+
+ </a>
+

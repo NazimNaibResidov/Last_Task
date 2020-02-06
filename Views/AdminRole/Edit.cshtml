@@ -1,0 +1,40 @@
+﻿@model RoleDetalis
+@{
+    ViewData["Title"] = "Edit";
+}
+
+    <div class="bg-primary text-white p-1 m-1">
+        <h2 class="text-center">Edit Role</h2>
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <form asp-controller="AdminRole" asp-action="Edit" method="post">
+        <input type="hidden" name="RoleId" value="@Model.Role.Id" />
+        <input type="hidden" name="RoleName" value="@Model.Role.Name" />
+        <h6 class="bg-info p-1 text-white">
+            Add TO @Model.Role.Name
+        </h6>
+        <table class="table table-bordered table-sm">
+            @if (Model.NonMemebers.Count()==0)
+            {
+                <tr><td colspan="2">All User Are Members</td></tr>
+            }
+            else
+            {
+                @foreach (var item in Model.NonMemebers)
+                {
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td>
+                            <input  type="checkbox" name="IdsToAdd" value="@item.Id" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <h6 class="bg-info p-1 text-white">
+           Delete TO @Model.Role.Name
+        </h6>
+       <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancle</a>
+    </form>
+

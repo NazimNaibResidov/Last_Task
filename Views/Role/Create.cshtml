@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="bg-primary text-white p-1 m-1 text-center">
+    <h2>Role Create</h2>
+</div>
+<div asp-validation-summary="All"></div>
+<form class="m-1 p-1" asp-controller="Role" asp-action="Create" method="post">
+    <div class="form-group">
+        <input type="text" name="name"  class="form-control" />
+    </div>
+   
+    <input type="submit" class="btn btn-success form-control" value="Create" />
+</form>
+

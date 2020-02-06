@@ -1,0 +1,18 @@
+﻿@model IEnumerable<City>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<table>
+    <tr>
+        <td>Name</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>
+
